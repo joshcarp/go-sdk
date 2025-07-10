@@ -15,7 +15,7 @@ The latest version contains breaking changes:
 - AddPrompts, AddResources and AddResourceTemplates are similarly replaced by singular methods which pair the
   feature with a handler. The ServerXXX types have been removed.
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/modelcontextprotocol/go-sdk)](https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/joshcarp/go-sdk)](https://pkg.go.dev/github.com/joshcarp/go-sdk)
 
 This repository contains an unreleased implementation of the official Go
 software development kit (SDK) for the Model Context Protocol (MCP).
@@ -33,9 +33,9 @@ initially reviewed at
 [modelcontextprotocol/discussions/364](https://github.com/orgs/modelcontextprotocol/discussions/364).
 
 Further design discussion should occur in
-[issues](https://github.com/modelcontextprotocol/go-sdk/issues) (for concrete
+[issues](https://github.com/joshcarp/go-sdk/issues) (for concrete
 proposals) or
-[discussions](https://github.com/modelcontextprotocol/go-sdk/discussions) for
+[discussions](https://github.com/joshcarp/go-sdk/discussions) for
 open-ended discussion. See CONTRIBUTING.md for details.
 
 ## Package documentation
@@ -43,11 +43,11 @@ open-ended discussion. See CONTRIBUTING.md for details.
 The SDK consists of two importable packages:
 
 - The
-  [`github.com/modelcontextprotocol/go-sdk/mcp`](https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk/mcp)
+  [`github.com/joshcarp/go-sdk/mcp`](https://pkg.go.dev/github.com/joshcarp/go-sdk/mcp)
   package defines the primary APIs for constructing and using MCP clients and
   servers.
 - The
-  [`github.com/modelcontextprotocol/go-sdk/jsonschema`](https://pkg.go.dev/github.com/modelcontextprotocol/go-sdk/jsonschema)
+  [`github.com/joshcarp/go-sdk/jsonschema`](https://pkg.go.dev/github.com/joshcarp/go-sdk/jsonschema)
   package provides an implementation of [JSON
   Schema](https://json-schema.org/), used for MCP tool input and output schema.
 

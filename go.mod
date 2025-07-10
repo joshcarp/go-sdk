@@ -1,4 +1,4 @@
-module github.com/modelcontextprotocol/go-sdk
+module github.com/joshcarp/go-sdk
 
 go 1.23.0
 
