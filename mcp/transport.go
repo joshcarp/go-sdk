@@ -124,6 +124,13 @@ func (t *IOTransport) Connect(context.Context) (Connection, error) {
 	return newIOConn(rwc{t.Reader, t.Writer}), nil
 }
 
+// NewIOTransport constructs an IOTransport from a single io.ReadWriteCloser
+// (e.g. a net.Conn). Convenience for callers that already hold a duplex
+// connection; equivalent to &IOTransport{Reader: c, Writer: c}.
+func NewIOTransport(c io.ReadWriteCloser) Transport {
+	return &IOTransport{Reader: c, Writer: c}
+}
+
 // An InMemoryTransport is a [Transport] that communicates over an in-memory
 // network connection, using newline-delimited JSON.
 //
