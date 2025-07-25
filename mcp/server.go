@@ -804,3 +804,14 @@ func paginateList[P listParams, R listResult[T], T any](fs *featureSet[T], pageS
 	*res.nextCursorPtr() = nextCursor
 	return res, nil
 }
+
+// Tools returns a slice of all registered tools.
+func (s *Server) Tools() []*Tool {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	tools := make([]*Tool, 0, s.tools.len())
+	for registered := range s.tools.all() {
+		tools = append(tools, registered.tool)
+	}
+	return tools
+}
