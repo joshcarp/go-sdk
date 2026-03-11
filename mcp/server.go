@@ -805,13 +805,20 @@ func paginateList[P listParams, R listResult[T], T any](fs *featureSet[T], pageS
 	return res, nil
 }
 
+// RegisteredTool is a public container for a tool and its handler.
+type RegisteredTool struct {
+	*Tool
+	Handler ToolHandler
+}
+
 // Tools returns a slice of all registered tools.
-func (s *Server) Tools() []*Tool {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-	tools := make([]*Tool, 0, s.tools.len())
-	for registered := range s.tools.all() {
-		tools = append(tools, registered.tool)
+func (s *Server) Tools() []*RegisteredTool {
+	var tools []*RegisteredTool
+	for t := range s.tools.all() {
+		tools = append(tools, &RegisteredTool{
+			Tool:    t.tool,
+			Handler: t.handler,
+		})
 	}
 	return tools
 }
