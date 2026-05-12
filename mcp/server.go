@@ -1115,6 +1115,19 @@ func (ss *ServerSession) NotifyProgress(ctx context.Context, params *ProgressNot
 	return handleNotify(ctx, notificationProgress, newServerRequest(ss, orZero[Params](params)))
 }
 
+// NotifyElicitationComplete signals to the client that an out-of-band
+// (URL-mode) elicitation interaction has finished. The client's
+// urlElicitationMiddleware uses this notification to resolve its waiter
+// keyed by params.ElicitationID and retry the original request that
+// returned URLElicitationRequired.
+//
+// Use this when the answer to the elicitation arrived through a side
+// channel (e.g. a web dashboard the user opened) rather than as the
+// direct response to the original elicitation/create call.
+func (ss *ServerSession) NotifyElicitationComplete(ctx context.Context, params *ElicitationCompleteParams) error {
+	return handleNotify(ctx, notificationElicitationComplete, newServerRequest(ss, orZero[Params](params)))
+}
+
 func newServerRequest[P Params](ss *ServerSession, params P) *ServerRequest[P] {
 	return &ServerRequest[P]{Session: ss, Params: params}
 }
